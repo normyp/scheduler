@@ -31,7 +31,7 @@ vector<date> parseDates(stringstream& iss)
 {
 	//make vector of empty dates
 	//int  i = 1;
-	date d = (from_simple_string("2010-19-12"));
+	date d = (from_simple_string("2010-12-12"));
 	vector<date> dates;
 	/*string daysAvailable;
 	getline(iss, daysAvailable, ';');
