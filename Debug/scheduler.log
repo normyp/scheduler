@@ -1,0 +1,16 @@
+﻿Build started 14/12/2014 16:36:02.
+     1>Project "D:\Programming\scheduler\scheduler\scheduler.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ID:\boost1_57_0_32bit\boost_1_57_0 /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt person.cpp readFromFile.cpp
+         readFromFile.cpp
+         person.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Programming\scheduler\Debug\scheduler.exe" /INCREMENTAL /NOLOGO /LIBPATH:"D:\boost1_57_0_32bit\boost_1_57_0\lib32-msvc-12.0" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Programming\scheduler\Debug\scheduler.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Programming\scheduler\Debug\scheduler.lib" /MACHINE:X86 Debug\person.obj
+         Debug\readFromFile.obj
+         scheduler.vcxproj -> D:\Programming\scheduler\Debug\scheduler.exe
+     1>Done Building Project "D:\Programming\scheduler\scheduler\scheduler.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.44
