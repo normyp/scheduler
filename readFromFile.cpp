@@ -1,3 +1,5 @@
+#define _SCL_SECURE_NO_WARNINGS
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -5,20 +7,21 @@
 #include "person.h"
 #include <vector>
 #include "boost\date_time\gregorian\gregorian.hpp"
+#include "boost\algorithm\string.hpp"
 
 using namespace std;
-using namespace boost::gregorian;
+using namespace boost;
 
 //const array of days available
 
 vector<Person*> people;
-vector<date> dates;
+vector<gregorian::date> dates;
 
-std::string trim(const std::string& str,
-	const std::string& whitespace = " \t")
+string trimString(const string& str,
+	const string& whitespace = " \t")
 {
 	const auto strBegin = str.find_first_not_of(whitespace);
-	if (strBegin == std::string::npos)
+	if (strBegin == string::npos)
 		return ""; // no content
 
 	const auto strEnd = str.find_last_not_of(whitespace);
@@ -27,12 +30,34 @@ std::string trim(const std::string& str,
 	return str.substr(strBegin, strRange);
 }
 
-vector<date> parseDates(stringstream& iss)
+vector<gregorian::date> parseDays(string daysAvailable)
+{
+	vector<gregorian::date> days;
+	//string j;
+	//gregorian::date d = (gregorian::from_simple_string(j));
+	// FIXME
+	//days.resize(2); 
+	vector<string> strs;
+	boost::split(strs, daysAvailable, boost::is_any_of(" "));
+	//put strs into days?
+	//cout << strs[0];
+	for(int i = 0; i < strs.size(); i++)
+	{
+		cout << strs[i] << endl;
+	//j = strs[i];
+	//days[i] = d;
+	}
+	return days;
+}
+
+vector<gregorian::date> parseDates(stringstream& iss)
 {
 	//make vector of empty dates
 	//int  i = 1;
-	date d = (from_simple_string("2010-12-12"));
-	vector<date> dates;
+	string daysAvailable = "2010-12-12 2011-14-12";
+	gregorian::date d = (gregorian::from_simple_string("2010-12-12"));
+	vector<gregorian::date> dates;
+	parseDays(daysAvailable);
 	/*string daysAvailable;
 	getline(iss, daysAvailable, ';');
 	dates.resize(i);
@@ -41,11 +66,12 @@ vector<date> parseDates(stringstream& iss)
 	return dates;
 }
 
+
 bool parseDriver(stringstream& iss)
 {
 	string driver;
 	getline(iss, driver, '.');
-	driver = trim(driver);
+	driver = trimString(driver);
 	return driver.compare("driver") == 0;
 }
 
