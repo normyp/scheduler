@@ -1,14 +1,116 @@
-﻿Build started 14/12/2014 16:42:18.
+﻿Build started 15/12/2014 18:17:09.
      1>Project "D:\Programming\scheduler\scheduler\scheduler.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ID:\boost1_57_0_32bit\boost_1_57_0 /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt readFromFile.cpp
          readFromFile.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Programming\scheduler\Debug\scheduler.exe" /INCREMENTAL /NOLOGO /LIBPATH:"D:\boost1_57_0_32bit\boost_1_57_0\lib32-msvc-12.0" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Programming\scheduler\Debug\scheduler.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Programming\scheduler\Debug\scheduler.lib" /MACHINE:X86 Debug\person.obj
-         Debug\readFromFile.obj
-         scheduler.vcxproj -> D:\Programming\scheduler\Debug\scheduler.exe
-     1>Done Building Project "D:\Programming\scheduler\scheduler\scheduler.vcxproj" (Build target(s)).
+     1>d:\programming\scheduler\scheduler\readfromfile.cpp(40): error C2374: 'd' : redefinition; multiple initialization
+                 d:\programming\scheduler\scheduler\readfromfile.cpp(37) : see declaration of 'd'
+     1>d:\boost1_57_0_32bit\boost_1_57_0\boost\range\iterator.hpp(69): error C2039: 'type' : is not a member of 'boost::mpl::eval_if_c<false,boost::range_const_iterator<char,void>,boost::range_mutable_iterator<char,void>>'
+                 d:\boost1_57_0_32bit\boost_1_57_0\boost\range\value_type.hpp(26) : see reference to class template instantiation 'boost::range_iterator<T,void>' being compiled
+                 with
+                 [
+                     T=char
+                 ]
+                 d:\programming\scheduler\scheduler\readfromfile.cpp(53) : see reference to class template instantiation 'boost::range_value<char>' being compiled
+     1>d:\boost1_57_0_32bit\boost_1_57_0\boost\range\value_type.hpp(26): error C3203: 'type' : unspecialized class template can't be used as a template argument for template parameter 'Iterator', expected a real type
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(371): error C2825: '_Iter': must be a class or namespace when followed by '::'
+                 d:\boost1_57_0_32bit\boost_1_57_0\boost\iterator\iterator_traits.hpp(22) : see reference to class template instantiation 'std::iterator_traits<Iterator>' being compiled
+                 with
+                 [
+                     Iterator=int
+                 ]
+                 d:\boost1_57_0_32bit\boost_1_57_0\boost\range\value_type.hpp(27) : see reference to class template instantiation 'boost::iterators::iterator_value<int>' being compiled
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(371): error C2039: 'iterator_category' : is not a member of '`global namespace''
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(371): error C2146: syntax error : missing ';' before identifier 'iterator_category'
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(371): error C2602: 'std::iterator_traits<Iterator>::iterator_category' is not a member of a base class of 'std::iterator_traits<Iterator>'
+                 with
+                 [
+                     Iterator=int
+                 ]
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(371) : see declaration of 'std::iterator_traits<Iterator>::iterator_category'
+                 with
+                 [
+                     Iterator=int
+                 ]
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(371): error C2868: 'std::iterator_traits<Iterator>::iterator_category' : illegal syntax for using-declaration; expected qualified-name
+                 with
+                 [
+                     Iterator=int
+                 ]
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(372): error C2825: '_Iter': must be a class or namespace when followed by '::'
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(372): error C2039: 'value_type' : is not a member of '`global namespace''
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(372): error C2146: syntax error : missing ';' before identifier 'value_type'
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(372): error C2602: 'std::iterator_traits<Iterator>::value_type' is not a member of a base class of 'std::iterator_traits<Iterator>'
+                 with
+                 [
+                     Iterator=int
+                 ]
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(372) : see declaration of 'std::iterator_traits<Iterator>::value_type'
+                 with
+                 [
+                     Iterator=int
+                 ]
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(372): error C2868: 'std::iterator_traits<Iterator>::value_type' : illegal syntax for using-declaration; expected qualified-name
+                 with
+                 [
+                     Iterator=int
+                 ]
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(373): error C2825: '_Iter': must be a class or namespace when followed by '::'
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(373): error C2039: 'difference_type' : is not a member of '`global namespace''
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(373): error C2146: syntax error : missing ';' before identifier 'difference_type'
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(373): error C2602: 'std::iterator_traits<Iterator>::difference_type' is not a member of a base class of 'std::iterator_traits<Iterator>'
+                 with
+                 [
+                     Iterator=int
+                 ]
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(373) : see declaration of 'std::iterator_traits<Iterator>::difference_type'
+                 with
+                 [
+                     Iterator=int
+                 ]
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(373): error C2868: 'std::iterator_traits<Iterator>::difference_type' : illegal syntax for using-declaration; expected qualified-name
+                 with
+                 [
+                     Iterator=int
+                 ]
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(375): error C2825: '_Iter': must be a class or namespace when followed by '::'
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(375): error C2039: 'pointer' : is not a member of '`global namespace''
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(375): error C2146: syntax error : missing ';' before identifier 'pointer'
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(375): error C2602: 'std::iterator_traits<Iterator>::pointer' is not a member of a base class of 'std::iterator_traits<Iterator>'
+                 with
+                 [
+                     Iterator=int
+                 ]
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(375) : see declaration of 'std::iterator_traits<Iterator>::pointer'
+                 with
+                 [
+                     Iterator=int
+                 ]
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(375): error C2868: 'std::iterator_traits<Iterator>::pointer' : illegal syntax for using-declaration; expected qualified-name
+                 with
+                 [
+                     Iterator=int
+                 ]
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(376): error C2825: '_Iter': must be a class or namespace when followed by '::'
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(376): error C2039: 'reference' : is not a member of '`global namespace''
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(376): error C2146: syntax error : missing ';' before identifier 'reference'
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(376): error C2602: 'std::iterator_traits<Iterator>::reference' is not a member of a base class of 'std::iterator_traits<Iterator>'
+                 with
+                 [
+                     Iterator=int
+                 ]
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(376) : see declaration of 'std::iterator_traits<Iterator>::reference'
+                 with
+                 [
+                     Iterator=int
+                 ]
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(376): error C2868: 'std::iterator_traits<Iterator>::reference' : illegal syntax for using-declaration; expected qualified-name
+                 with
+                 [
+                     Iterator=int
+                 ]
+     1>Done Building Project "D:\Programming\scheduler\scheduler\scheduler.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:02.21
+Time Elapsed 00:00:01.69

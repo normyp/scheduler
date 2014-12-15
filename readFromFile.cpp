@@ -2,17 +2,17 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-#include "person.h"
 #include <vector>
+#include "boost\algorithm\string.hpp"
 #include "boost\date_time\gregorian\gregorian.hpp"
+#include "person.h"
 
 using namespace std;
-using namespace boost::gregorian;
 
 //const array of days available
 
 vector<Person*> people;
-vector<date> dates;
+vector<boost::gregorian::date> dates;
 
 std::string trim(const std::string& str,
 	const std::string& whitespace = " \t")
@@ -27,18 +27,39 @@ std::string trim(const std::string& str,
 	return str.substr(strBegin, strRange);
 }
 
-vector<date> parseDates(stringstream& iss)
+vector<boost::gregorian::date> parseDates(stringstream& iss)
 {
 	//make vector of empty dates
 	//int  i = 1;
-	date d = (from_simple_string("2010-12-12"));
-	vector<date> dates;
-	/*string daysAvailable;
+	string daysAvailable;
 	getline(iss, daysAvailable, ';');
-	dates.resize(i);
-	date d(from_simple_string(daysAvailable));
-	dates[i] = d;*/
+	boost::gregorian::date parseDays(string daysAvailable);
+	boost::gregorian::date d = (boost::gregorian::from_simple_string(daysAvailable));
+	vector<boost::gregorian::date> dates;
+	//dates.resize(i);
+	boost::gregorian::date d(boost::gregorian::from_simple_string(daysAvailable));
+	//dates[i] = d;
 	return dates;
+}
+
+vector<boost::gregorian::date> parseDays(string daysAvailable)
+{
+	vector<boost::gregorian::date> days;
+	//string j;
+	//date d = (from_simple_string(j));
+	// FIXME
+	//days.resize(2); 
+	vector<string> strs;
+	boost::split(strs, daysAvailable, boost::is_any_of(' '));
+	//put strs into days?
+	cout << strs[0];
+	/*for(int i = 0; i < strs.size(); i++)
+	{
+		cout << strs[i];
+		//j = strs[i];
+		//days[i] = d;
+	}*/
+	return days;
 }
 
 bool parseDriver(stringstream& iss)
