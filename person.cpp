@@ -4,7 +4,7 @@ using namespace std;
 
 Person::Person(string name, bool driver) {
 	_name = name;
-	//int _daysAvailable;
+	//_daysAvailable = daysAvailable;
 	_driver = driver;
 	//int _timesUsed;
 };

@@ -7,7 +7,7 @@ using namespace std;
 class Person
 {
 	string _name;
-	int _daysAvailable; //vector of dates - date class
+	//int _daysAvailable; //vector of dates - date class
 	bool _driver;
 	int timesUsed;
 public:

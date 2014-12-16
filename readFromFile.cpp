@@ -33,19 +33,26 @@ string trimString(const string& str,
 vector<gregorian::date> parseDays(string daysAvailable)
 {
 	vector<gregorian::date> days;
-	//string j;
-	//gregorian::date d = (gregorian::from_simple_string(j));
-	// FIXME
-	//days.resize(2); 
 	vector<string> strs;
+	int j = 0;
 	boost::split(strs, daysAvailable, boost::is_any_of(" "));
-	//put strs into days?
-	//cout << strs[0];
-	for(int i = 0; i < strs.size(); i++)
+	for(unsigned int i = 0; i < strs.size(); i++)
 	{
-		cout << strs[i] << endl;
-	//j = strs[i];
-	//days[i] = d;
+		if (strs[i] != "")
+		{
+			cout << "{" << strs[i] << "}" << endl;
+			string day;
+			day = strs[i];
+			cout << day << endl;
+			days.resize(j+1);
+			gregorian::date d = (gregorian::from_simple_string(day));
+			days[j++] = d;
+		}
+		
+	}
+	for (unsigned int i = 0; i < days.size(); i++)
+	{
+		cout << days[i] << endl;
 	}
 	return days;
 }
@@ -54,10 +61,10 @@ vector<gregorian::date> parseDates(stringstream& iss)
 {
 	//make vector of empty dates
 	//int  i = 1;
-	string daysAvailable = "2010-12-12 2011-14-12";
-	gregorian::date d = (gregorian::from_simple_string("2010-12-12"));
+	string daysAvailable;
+	getline(iss, daysAvailable, ';');
 	vector<gregorian::date> dates;
-	parseDays(daysAvailable);
+	dates = parseDays(daysAvailable);
 	/*string daysAvailable;
 	getline(iss, daysAvailable, ';');
 	dates.resize(i);
