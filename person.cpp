@@ -1,10 +1,13 @@
 #include <iostream>
 #include "Person.h"
+#include <vector>
+#include "boost\date_time\gregorian\gregorian.hpp"
 using namespace std;
+using namespace boost;
 
-Person::Person(string name, bool driver) {
+Person::Person(string name, bool driver, vector<gregorian::date>daysAvailable) {
 	_name = name;
-	//_daysAvailable = daysAvailable;
+	_daysAvailable = daysAvailable;
 	_driver = driver;
 	//int _timesUsed;
 };
@@ -13,26 +16,13 @@ bool Person::isDriver()
 {
 	return _driver;
 }
-/*int Person::getDate(int daysAvailable)
+
+vector<gregorian::date> Person::getDate()
 {
-return daysAvailable;
-}*/
+	return _daysAvailable;
+}
+
 string Person::getName()
 {
 	return _name;
-}
-
-void Person::setLegal(bool driver, bool _driver)
-{
-	_driver = driver;
-}
-
-/*void Person::setDate(int daysAvailable, int _daysAvailable)
-{
-_daysAvailable = daysAvailable;
-}*/
-
-void Person::setName(string name, string _name)
-{
-	_name = name;
 }

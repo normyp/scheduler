@@ -1,24 +1,25 @@
 #ifndef _PERSON_H_
 #define _PERSON_H_
 
-using namespace std;
 #include <string>
+#include <vector>
+#include "boost\date_time\gregorian\gregorian.hpp"
+
+using namespace std;
+using namespace boost;
 
 class Person
 {
 	string _name;
-	//int _daysAvailable; //vector of dates - date class
+	vector<gregorian::date> _daysAvailable; //vector of dates - date class
 	bool _driver;
 	int timesUsed;
-public:
-	Person(string name, bool driver);
-	bool isDriver();
-	//int getDate(int daysAvailable);
-	string getName();
 
-	void setLegal(bool driver, bool _driver);
-	//void setDate(int daysAvailable, int _daysAvailable);
-	void setName(string name, string _name);
+public:
+	Person(string name, bool driver, vector<gregorian::date> dates);
+	bool isDriver();
+	vector<gregorian::date>getDate();
+	string getName();
 };
 
 #endif _PERSON_H_

@@ -40,39 +40,65 @@ vector<gregorian::date> parseDays(string daysAvailable)
 	{
 		if (strs[i] != "")
 		{
-			cout << "{" << strs[i] << "}" << endl;
 			string day;
 			day = strs[i];
-			cout << day << endl;
 			days.resize(j+1);
 			gregorian::date d = (gregorian::from_simple_string(day));
 			days[j++] = d;
 		}
 		
 	}
-	for (unsigned int i = 0; i < days.size(); i++)
+	/*for (unsigned int i = 0; i < days.size(); i++)
 	{
 		cout << days[i] << endl;
-	}
+	}*/
 	return days;
 }
 
 vector<gregorian::date> parseDates(stringstream& iss)
 {
-	//make vector of empty dates
-	//int  i = 1;
 	string daysAvailable;
 	getline(iss, daysAvailable, ';');
 	vector<gregorian::date> dates;
 	dates = parseDays(daysAvailable);
-	/*string daysAvailable;
-	getline(iss, daysAvailable, ';');
-	dates.resize(i);
-	date d(from_simple_string(daysAvailable));
-	dates[i] = d;*/
 	return dates;
 }
 
+gregorian::date earliestDay(vector<gregorian::date> dates)
+{
+	if (dates.size() == 0)
+	{
+		cerr << "No dates provided" << endl;
+		exit(1);
+	}
+	gregorian::date first = dates[0];
+	for (int i = 1; i < dates.size(); i++)
+	{
+		if (dates[i] < first)
+		{
+			first = dates[i];
+		}
+	}
+	return first;
+}
+
+gregorian::date latestDay(vector<gregorian::date> dates)
+{
+	if (dates.size() == 0)
+	{
+		cerr << "No dates provided" << endl;
+		exit(1);
+	}
+	gregorian::date last = dates[0];
+	for (int i = 1; i < dates.size(); i++)
+	{
+		if (dates[i] > last)
+		{
+			last = dates[i];
+		}
+	}
+	return last;
+}
 
 bool parseDriver(stringstream& iss)
 {
@@ -98,10 +124,14 @@ int main()
 	int numberOfPeople = 0;
 	int currentPerson = 0;
 	bool b = false;
+	bool personAvailable = false;
+	vector<gregorian::date>allDates;
+	gregorian::date startDay, endDay;
 
-	//learn boost::date
-	//print out days available for each person
 	//print out for each day list of people who are available
+	//Find out which day is the earliest date in the file
+	//Check through each day until the latest date in the file
+	//On each day cout the current day and the people who have that date in their vector of dates
 
 	/*
 	for(int i = 0; i < lastDay; i++)
@@ -139,37 +169,73 @@ int main()
 	{
 		stringstream iss(line);
 		getline(iss, name, ':');
-		Person* p = new Person(name, parseDriver(iss));
+		bool driver = parseDriver(iss);
+		vector<gregorian::date>dates = parseDates(iss);
+		Person* p = new Person(name, driver, dates);
 		people.resize(++numberOfPeople);
 		people[numberOfPeople - 1] = p;
-		dates = parseDates(iss);
-		//break if you don't start with name
-		//cout << name << daysAvailable << driver << endl;
-	}
-	//put algorithm in own function
+		int currentPos = allDates.size();
+		allDates.resize(allDates.size() + dates.size());
+		for (int i = 0; i < dates.size(); i++)
+		{
+			allDates[currentPos+i] = dates[i];
+		}
 
-	for (int i = 0; i < numberOfPeople; i++)
+		//checkForLastDay(dates);
+	}
+
+	startDay = earliestDay(allDates);
+	endDay = latestDay(allDates);
+
+
+	/*for (int i = 0; i < numberOfPeople; i++)
 	{
 		if (people[i]->isDriver())
 		{
-			cout << people[i]->getName() << " is a driver." << endl;
+			cout << people[i]->getName() << " is a driver and can work on: " << endl;
 		}
 		else
 		{
-			cout << people[i]->getName() << " is not a driver." << endl;
+			cout << people[i]->getName() << " is a passenger and can work on: " << endl;
 		}
-	}
-
-
-	/*while (getline(inFile, line))
-	{
-	currentPerson++;
-	stringstream iss(line);
-	getline(iss, name, ':');
-	getline(iss, daysAvailable, ';');
-	getline(iss, driver, '.');
-	people.setName();
+		dates = people[i]->getDate();
+		for (int j = 0; j < dates.size(); j++)
+		{
+			 cout << dates[j] << endl;
+		}
 	}*/
+
+	gregorian::date_duration dd(1);
+	int count;
+
+	for(gregorian::date i = startDay; i < endDay; i = i + dd)
+	{
+		cout << "The people who can work on " << i << " are as follows: " << endl;
+		count = 0;
+		for(int j = 0; j < numberOfPeople; j++)
+		{
+			dates = people[j]->getDate();
+			for (int k = 0; k < dates.size(); k++)
+			{
+				if (dates[k] == i)
+				{
+					personAvailable = true;
+				}
+			}
+			if (personAvailable)
+			{
+				cout << people[j]->getName() << endl;
+				count++;
+			}
+			if (j == numberOfPeople-1 && count == 0)
+			{
+				cout << "No-one!" << endl;
+			}
+			personAvailable = false;
+		}
+		cout << endl;
+	}	
+
 
 	inFile.close();
 
