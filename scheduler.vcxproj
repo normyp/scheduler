@@ -119,10 +119,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="output.cpp" />
     <ClCompile Include="person.cpp" />
     <ClCompile Include="readFromFile.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="output.h" />
     <ClInclude Include="person.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
