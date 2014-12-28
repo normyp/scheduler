@@ -9,7 +9,7 @@ Person::Person(string name, bool driver, vector<gregorian::date>daysAvailable) {
 	_name = name;
 	_daysAvailable = daysAvailable;
 	_driver = driver;
-	//int _timesUsed;
+	int timesUsed;
 };
 
 bool Person::isDriver()
@@ -25,4 +25,14 @@ vector<gregorian::date> Person::getDate()
 string Person::getName()
 {
 	return _name;
+}
+
+void Person::addToTimesUsed()
+{
+	timesUsed++;
+}
+
+int Person::getTimesUsed()
+{
+	return timesUsed;
 }

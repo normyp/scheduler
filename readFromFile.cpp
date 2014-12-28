@@ -63,17 +63,12 @@ int main()
 	vector<gregorian::date>allDates;
 	gregorian::date startDay, endDay;
 
-	//print out for each day list of people who are available
-	//Find out which day is the earliest date in the file
-	//Check through each day until the latest date in the file
-	//On each day cout the current day and the people who have that date in their vector of dates
 	parsing("people.txt", &numberOfPeople, &people, &allDates);
 	
 	startDay = earliestDay(allDates);
 	endDay = latestDay(allDates);
 
 	output(startDay, endDay, numberOfPeople, people, dates, personAvailable);
-
 
 	cin.ignore(3);
 	return 0;

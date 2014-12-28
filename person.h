@@ -20,6 +20,8 @@ public:
 	bool isDriver();
 	vector<gregorian::date>getDate();
 	string getName();
+	void addToTimesUsed();
+	int getTimesUsed();
 };
 
 #endif _PERSON_H_
